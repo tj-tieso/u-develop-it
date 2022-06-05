@@ -16,9 +16,39 @@ const db = mysql.createConnection(
   console.log("Connected to the election database.")
 );
 
-db.query(`SELECT * FROM candidates`, (err, rows) => {
-  console.log(rows);
-});
+// database call 12.2/4
+// db.query(`SELECT * FROM candidates`, (err, rows) => {
+//   console.log(rows);
+// });
+
+// request single candidate
+// db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(row);
+// });
+
+// Delete candidate
+// db.query(`DELETE FROM candidates WHERE id = ?`, 1, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
+
+// create a new candidate
+// const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected)
+//             VALUES (?,?,?,?)`;
+
+// const params = [1, "Ronald", "Firbank", 1];
+
+// db.query(sql, params, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
 
 // route to handle user requests that aren't supported by the app
 app.use((req, res) => {
