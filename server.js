@@ -1,10 +1,11 @@
 const express = require("express");
-const inputCheck = require("./utils/inputCheck");
 const db = require("./db/connection");
+const apiRoutes = require("./routes/apiRoutes");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
-//route requires
-const apiRoutes = require("./routes/apiRoutes");
+
+const inputCheck = require("./utils/inputCheck");
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
@@ -18,6 +19,10 @@ app.use((req, res) => {
 });
 
 // hey, listen
-app.listen(PORT, () => {
-  console.log(`Hey! Listen! on http://localhost:${PORT}`);
+db.connect((err) => {
+  if (err) throw err;
+  console.log("DB connected.");
+  app.listen(PORT, () => {
+    console.log(`Hey! Listen! on http://localhost:${PORT}`);
+  });
 });
