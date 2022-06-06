@@ -200,7 +200,7 @@ app.delete("/api/party/:id", (req, res) => {
 
 // END PARTY ROUTES
 
-// route to handle user requests that aren't supported by the app
+// handle user requests that aren't supported by the app
 app.use((req, res) => {
   res.status(404).end();
 });
